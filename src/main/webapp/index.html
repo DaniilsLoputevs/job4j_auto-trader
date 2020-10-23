@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script src="utilFunctions.js"></script>
+    <script src="login.js"></script>
+
+
+    <title>main Page</title>
+</head>
+<body>
+
+<h1>Auto-Trader</h1>
+<!-- Link to Open the Modal -->
+<a id="link-login" href="#" class="text-primary"
+   data-toggle="modal" data-target="#auth-modal">
+    Login
+</a>
+
+<div class="row pt-3">
+
+    <form>
+        <div class="row">
+<!--            &lt;!&ndash; add new Task &ndash;&gt;-->
+<!--            <div class="col">-->
+<!--                <form id="newTaskForm">-->
+<!--                    <label>New Task-->
+<!--                        <input id="new-task-desc" type="text" class="form-control" placeholder="task description">-->
+<!--                        <select class="form-control" id="category-list" role="listbox" multiple>-->
+<!--                            &lt;!&ndash; script insert <option> here.&ndash;&gt;-->
+<!--                        </select>-->
+<!--                        <button id="btn-add-task" class="btn btn-primary">add Task</button>-->
+<!--                    </label>-->
+<!--                </form>-->
+<!--            </div>-->
+
+            <!-- btn hide OR show done task -->
+<!--            <div class="col">-->
+<!--                <button id="btn-hide-done-task" type="button" class="btn btn-success">show/hide done tasks</button>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; update table &ndash;&gt;-->
+<!--            <div class="col">-->
+<!--                <button id="btn-upd-table" type="button" class="btn btn-success">update changes</button>-->
+<!--            </div>-->
+        </div>
+    </form>
+
+
+    <!-- table -->
+    <table id="all-auto-table" class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 120px">ID</th>
+            <th>Img</th>
+            <th>Name</th>
+            <th>Seller</th>
+            <th>Brand</th>
+            <th>Body</th>
+            <th>Sell status</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+        <tr></tr>
+        </tbody>
+    </table>
+
+
+    <!-- auth modal window -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Authorization</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <label> Email
+                        <input id="auth-email" type="email" placeholder="Enter your email">
+                    </label>
+                    <label> Password
+                        <input id="auth-password" type="password" placeholder="Enter your password">
+                    </label>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <!-- Button to Open the Modal -->
+                    <a id="link-reg" href="#" class="text-primary"
+                       data-toggle="modal" data-target="#reg-modal">
+                        registration
+                    </a>
+                    <button id="btn-auth-submit" class="btn btn-success" data-dismiss="modal">
+                        authorization
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- registration modal window -->
+    <div class="modal" id="reg-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Registration</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <label> Name
+                        <input id="reg-name" type="text" placeholder="Enter your name">
+                    </label>
+                    <label> Password
+                        <input id="reg-password" type="password" placeholder="Enter your password">
+                    </label>
+                    <label> Email
+                        <input id="reg-email" type="email" placeholder="Enter your email">
+                    </label>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="btn-reg-submit" class="btn btn-success">
+                        Register
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
