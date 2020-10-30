@@ -35,7 +35,6 @@ $(document).ready(() => {
 
             let isSoldColor = (order.isSold) ? "#f00" : "#2bc25b";
 
-            let temp = MPF;
             finalHtml += `
                 <div id="${id}" class="row">
                 <img width="250" height="250" src="${imgBase64}" alt="IMG NOT FOUND">

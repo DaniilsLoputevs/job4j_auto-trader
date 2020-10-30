@@ -3,6 +3,7 @@ package servlets;
 import servlets.processing.IndexCode;
 import servlets.processing.LoginCode;
 import servlets.processing.OtherCode;
+import servlets.processing.order.Edit;
 import util.CustomLog;
 import util.TriConsumer;
 
@@ -33,6 +34,8 @@ public class ServerCore {
         serverCommands.put("AUTH_USER", LoginCode::authUser);
 
         serverCommands.put("INDEX:GET_TABLE", IndexCode::getTable);
+
+        serverCommands.put("ORDER_EDIT:SAVE_ORDER", Edit::saveOrder);
 
         /* Multi-Part-Form requests */
 

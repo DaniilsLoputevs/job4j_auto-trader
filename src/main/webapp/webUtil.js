@@ -1,9 +1,15 @@
 /**
- * go straight to other HTML page.
+ * go straight(without any data load) to other HTML page.
+ * check auth, - if not show alert about "Unauthorized user".
+ *
  * @param String - name of HTML file with packages name.
  */
-function goToHtml(String) {
-    window.location.href = getContextPath() + "/" + String + ".html";
+function goToHtmlAuth(String) {
+    // if (checkAuth() >= 0) {
+        window.location.href = getContextPath() + "/" + String + ".html";
+    // } else {
+    //     alert("You need to be authorized user, to use this option.");
+    // }
 }
 
 /**
@@ -26,6 +32,28 @@ function getContextPath() {
 
 function refreshCurrentPage() {
     window.location.href = getContextPath();
+}
+
+/**
+ * meaning of return int:
+ * -1 : Unauthorized user
+ * 0 : root
+ * 1 : Authorised user
+ *
+ * @returns {number}
+ */
+function checkAuth() {
+    let rsl;
+    let loginHrefName = sessionStorage.getItem("user");
+    if (loginHrefName === null) {
+        rsl = -1;
+    } else if (loginHrefName === "root") {
+        rsl = 0;
+    } else { // any other Authorised user.
+        rsl = 1;
+    }
+
+    return rsl;
 }
 
 /* other util method */

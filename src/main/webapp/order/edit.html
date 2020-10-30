@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script src="../webUtil.js"></script>
+    <script src="../order/saveOrder.js"></script>
+
+    <title>Order Edit</title>
+</head>
+<body>
+
+<h1>ORDER EDIT</h1>
+
+<!--<form enctype="application/x-www-form-urlencoded">-->
+<!--    <input id="input-file-test-upload" type="file">-->
+<!--    <button id="btn-test" type="button">submit file</button>-->
+<!--</form>-->
+
+
+<!--    <input id="input-file-test-upload" type="file">-->
+<!--    <button id="btn-save-order" type="button">submit order</button>-->
+
+
+<!--<div class="row">-->
+
+
+    <form class="needs-validation" enctype="multipart/form-data">
+        <div class="form-row px-4">
+            <div class="col-md-4 mb-3">
+                <label for="in-car-brand">Car brand</label>
+                <input type="text" class="form-control" id="in-car-brand" placeholder="example: Volkswagen" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-car-model">Car model</label>
+                <input type="text" class="form-control" id="in-car-model" placeholder="example: Golf" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-car-year">Car Year</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-car-year"
+                           title="Year that this car was made" placeholder="example: 2008" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-car-mileage">Mileage</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-car-mileage"
+                           title="write number without spaces!!!" placeholder="example: 12000" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-car-door-count">Door count</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-car-door-count"
+                           title="How many doors in this car. The trunk also counts" placeholder="example: 5" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row px-4">
+            <div class="col-md-4 mb-3">
+                <label for="in-car-engine">Engine</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-car-engine" placeholder="example: 1.6 MT" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-car-body">Car body</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-car-body" placeholder="example: sedan" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-car-transmission">Car transmission</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-car-transmission" placeholder="example: manual" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-car-fuel-type">Fuel type</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-car-fuel-type" placeholder="example: petrol" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row px-4">
+            <div class="col-md-4 mb-3">
+                <label for="in-order-desc">Order description</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-order-desc"
+                           placeholder="example: Car in good condition and etc..." required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-order-img">Image</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="in-order-img" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-order-price">Price</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-order-price"
+                           placeholder="example: 79000" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="in-order-area">Area</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-order-area"
+                           placeholder="example: SPB Admiralteyskiy district" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3" hidden>
+                <label for="in-order-seller">Seller</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="in-order-seller"
+                           placeholder="example: hidden" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group px-4">
+            <button class="btn btn-primary" id="btn-order-save" type="button">Save Order</button>
+        </div>
+    </form>
+
+</body>
+</html>
