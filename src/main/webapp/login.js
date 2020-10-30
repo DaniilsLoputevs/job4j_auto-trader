@@ -9,7 +9,7 @@ $(function () {
             $.ajax({
                 type: 'GET',
                 crossdomain: true,
-                url: getContextPath() + '/query-global',
+                url: getBackEndUrl(),
                 dataType: 'text',
                 data: {
                     server_action: "AUTH_USER",
@@ -25,7 +25,7 @@ $(function () {
                     alert(parseData);
                 } else {
                     document.getElementById("link-login").innerText = parseData;
-                    sessionStorage.setItem("user", parseData.user);
+                    sessionStorage.setItem("user", parseData);
                     alert("Authorization success!");
                 }
             }).fail((err) => {
@@ -52,7 +52,7 @@ $(function () {
             $.ajax({
                 type: 'POST',
                 crossdomain: true,
-                url: getContextPath() + '/query-global',
+                url: getBackEndUrl(),
                 dataType: 'text',
                 data: {
                     server_action: "REG_USER",
@@ -61,7 +61,7 @@ $(function () {
                     email: email,
                 },
             }).done((data) => {
-                window.location.href = getContextPath();
+                refreshCurrentPage();
                 alert("Register success!");
             }).fail((err) => {
                 alert("Error!!! - See console");
@@ -78,7 +78,7 @@ $(function () {
 // Identify user (Login(guest) || userName)
 $(document).ready(() => {
     let loginHrefName = sessionStorage.getItem("user");
-    if (loginHrefName == null) {
+    if (loginHrefName === null) {
         loginHrefName = "Login";
     }
     document.getElementById("link-login").innerText = loginHrefName;

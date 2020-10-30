@@ -7,14 +7,4 @@
 
   <display-name>Archetype Created Web Application</display-name>
 
-  <!-- ajax script Servlets-->
-  <servlet>
-    <servlet-name>queryServlet</servlet-name>
-    <servlet-class>servlets.QueryServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>queryServlet</servlet-name>
-    <url-pattern>/query-global</url-pattern>
-  </servlet-mapping>
-
 </web-app>

@@ -20,16 +20,9 @@
         <property name="use_sql_comments">true</property>
 
         <mapping class="models.Car" />
-        <mapping class="models.User" />
         <mapping class="models.Order" />
+        <mapping class="models.User" />
+        <mapping class="models.ImgAlbum" />
 
-<!--        <mapping class="models.other.manytoone.Brand" />-->
-<!--        <mapping class="models.other.manytoone.Car" />-->
-
-<!--        <mapping class="models.other.manytomany.Author" />-->
-<!--        <mapping class="models.other.manytomany.Book" />-->
-
-<!--        <mapping class="models.other.lazyinit.Brand" />-->
-<!--        <mapping class="models.other.lazyinit.Car" />-->
     </session-factory>
 </hibernate-configuration>

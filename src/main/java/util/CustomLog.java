@@ -18,6 +18,8 @@ public class CustomLog {
     public static <T> void log(String desc, T anything) {
         if (anything instanceof String) {
             log(desc + ": \"" + anything + '\"');
+        } else if (anything == null) {
+            log(desc + ": null");
         } else if (anything instanceof List) {
             logList(desc, (List) anything);
         } else if (isArray(anything)) {
