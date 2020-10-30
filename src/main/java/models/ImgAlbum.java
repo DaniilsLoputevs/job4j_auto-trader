@@ -13,27 +13,12 @@ public class ImgAlbum {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @OneToMany(cascade = CascadeType.ALL)
     @ElementCollection(targetClass = byte[].class)
-//    @ManyToMany(mappedBy = "img_albums", cascade = CascadeType.ALL)
-//    private File[] imgList;
-//    private List<File> imgList;
     private List<byte[]> imgList;
 
     public ImgAlbum() {
     }
 
-//    public ImgAlbum(int id, File... imgList) {
-//        this.id = id;
-//        this.imgList = imgList;
-//    }
-//    public ImgAlbum(int id,List<File>  imgList) {
-//        this.id = id;
-//        this.imgList = imgList;
-//    }
     public ImgAlbum(int id, List<byte[]>  imgList) {
         this.id = id;
         this.imgList = imgList;
@@ -51,22 +36,10 @@ public class ImgAlbum {
         this.id = id;
     }
 
-//    public File[] getImgList() {
-//        return imgList;
-//    }
-//    public List<File> getImgList() {
-//        return imgList;
-//    }
     public List<byte[]> getImgList() {
         return imgList;
     }
 
-//    public void setImgList(File[] imgList) {
-//        this.imgList = imgList;
-//    }
-//    public void setImgList(List<File> imgList) {
-//        this.imgList = imgList;
-//    }
     public void setImgList(List<byte[]> imgList) {
         this.imgList = imgList;
     }

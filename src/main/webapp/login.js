@@ -8,8 +8,8 @@ $(function () {
 
             $.ajax({
                 type: 'GET',
+                url: BACK_END_URL,
                 crossdomain: true,
-                url: getBackEndUrl(),
                 dataType: 'text',
                 data: {
                     server_action: "AUTH_USER",
@@ -51,8 +51,8 @@ $(function () {
 
             $.ajax({
                 type: 'POST',
+                url: BACK_END_URL,
                 crossdomain: true,
-                url: getBackEndUrl(),
                 dataType: 'text',
                 data: {
                     server_action: "REG_USER",

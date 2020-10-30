@@ -32,8 +32,7 @@ $(function () {
 
             $.ajax({
                 type: 'POST',
-                // url: getBackEndMPFPort(),
-                url: getBackEndUrl(),
+                url: BACK_END_MPF_URL,
                 crossdomain: true,
                 contentType: false,
                 processData: false,

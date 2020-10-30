@@ -18,25 +18,30 @@ public class JsonMapper {
 
     /**
      * It need for avoid send user private data. Login, Password and etc.
+     *
      * @param orders -
      * @return List of objects: {
      * "id":int,
-     *  "name":String,
-     *  "price":int,
-     *  "car": {
-     *  	"name":String,
-     * 	    "brand":String,
+     * "desc":String,
+     * "price":int,
+     * "car": {
+     *  	"brand":String,
+     *  	"model":String,
+     *  	"year":int,
+     *      "doorCount":int,
+     *      "doorCount":int,
+     *      "engine":String,
      * 	    "body":String,
-     * 	    "doorCount":int,
-     * 	    "fuelType":String,
      * 	    "transmission":String
+     * 	    "fuelType":String,
      * },
+     * "area":String,
      * "seller":String,
      * "isSold":boolean
      * }
      */
     public static String ordersForIndexTable(List<Order> orders) {
-        var rsl = new ArrayList<String>();
+        List<String> rsl = new ArrayList<>();
         for (var each : orders) {
             // prepare data
             String imgBase64 = "";

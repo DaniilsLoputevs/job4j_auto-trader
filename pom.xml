@@ -133,6 +133,32 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- from https://github.com/apache/flink/pull/5644/files -->
+            <!-- resolve problem with compile: Changes detected - recompiling the module! -->
+            <plugin>
+                <!-- just define the Java version to be used for compiling and plugins -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version><!--$NO-MVN-MAN-VER$-->
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <!-- The output of Xlint is not shown by default, but we activate it for the QA bot
+                    to be able to get more warnings -->
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <!-- The semantics of this option are reversed, see MCOMPILER-209. -->
+                    <useIncrementalCompilation>false</useIncrementalCompilation>
+                    <compilerArgs>
+                        <!-- The output of Xlint is not shown by default, but we activate it for the QA bot
+                        to be able to get more warnings -->
+                        <arg>-Xlint:all</arg>
+                        <!-- Prevents recompilation due to missing package-info.class, see MCOMPILER-205 -->
+                        <arg>-Xpkginfo:always</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
