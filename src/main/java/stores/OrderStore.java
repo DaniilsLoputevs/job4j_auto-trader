@@ -23,21 +23,29 @@ public class OrderStore {
     }
 
     public List<Order> getAll() {
-        String temp = "select distinct mt from Order as mt "
+        String hql = "select distinct mt from Order as mt "
                 + "join fetch mt.car "
                 + "join fetch mt.seller "
                 + "join fetch mt.imgAlbum.imgList";
-        return HbmProvider.instOf().exeQueryList(temp);
+        return HbmProvider.instOf().exeQueryList(hql);
     }
 
     public Order getById(int id) {
-        var temp = core.getBy("id", id);
-        return getOrderOrEmptyUser(temp);
+        String hql = "select distinct mt from Order as mt "
+                + "join fetch mt.car "
+                + "join fetch mt.seller "
+                + "join fetch mt.imgAlbum.imgList";
+        List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
+        return getOrderOrEmpty(temp);
+
+//        var temp = core.getBy("id", id);
+//        return getOrderOrEmptyUser(temp);
     }
 
+    @Deprecated
     public Order getByName(String name) {
         var temp = core.getBy("name", name);
-        return getOrderOrEmptyUser(temp);
+        return getOrderOrEmpty(temp);
     }
 
     public void delete(int id) {
@@ -46,7 +54,11 @@ public class OrderStore {
         core.delete(temp);
     }
 
-    private Order getOrderOrEmptyUser(List<Order> list) {
+    public void update(Order order) {
+        core.update(order);
+    }
+
+    private Order getOrderOrEmpty(List<Order> list) {
         return (list.isEmpty()) ? new Order() : list.get(0);
     }
 }

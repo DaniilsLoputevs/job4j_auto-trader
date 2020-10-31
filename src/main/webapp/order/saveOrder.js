@@ -1,28 +1,13 @@
-//     var file_data = this.files[0];
-//     file_data.name = idaviz +'.pdf';
-//     var form_data = new FormData();
-//     form_data.append("file", file_data);
-//     form_data.append('extraParam','value231');
-//     console.log(file_data);
-//     console.log('here');
-//     var oReq = new XMLHttpRequest();
-//     oReq.open("POST", "ajax_page.php", true);
-//     oReq.onload = function (oEvent) {
-//         if (oReq.status === 200) {
-//             console.log('upload succes',oReq.responseText);
-//         } else {
-//             console.log("Error " + oReq.status + " occurred when trying to upload your file.<br \/>");
-//         }
-//     };
-//
-//     oReq.send(form_data);
-// });
-
-
 $(function () {
     $('#btn-order-save').click(() => {
         let formData = new FormData();
-        const orderID = "stub";
+        const orderId = "" + 0; // stub
+        // const orderId = getSelectedId(); // stub
+        // const carId = "" + 0; // stub
+        const seller = getCurrentUser();
+        const isSold = "" + false; // stub
+
+
         const carBrand = $('#in-car-brand').val();
         const carModel = $('#in-car-model').val();
         const carYear = $('#in-car-year').val();
@@ -45,20 +30,25 @@ $(function () {
         // console.log("img", orderImg);
 
         formData.append("server_action", "ORDER_EDIT:SAVE_ORDER");
+        formData.append("orderId", orderId);
+        formData.append("orderImg", $('#in-order-img')[0].files);
+        formData.append("orderDesc", $('#in-order-desc').val());
+        formData.append("orderPrice", $('#in-order-price').val());
+
+        // formData.append("carId", carId);
         formData.append("carBrand", $('#in-car-brand').val());
         formData.append("carModel", $('#in-car-model').val());
         formData.append("carYear", $('#in-car-year').val());
-        formData.append("carMileage", $('#in-car-mileage').val());
         formData.append("carDoorCount", $('#in-car-door-count').val());
+        formData.append("carMileage", $('#in-car-mileage').val());
         formData.append("carEngine", $('#in-car-engine').val());
         formData.append("carBody",$('#in-car-body').val());
         formData.append("carTransmission",$('#in-car-transmission').val());
         formData.append("carFuelType",$('#in-car-fuel-type').val());
 
-        formData.append("orderDesc", $('#in-order-desc').val());
-        formData.append("orderImg", $('#in-order-img')[0].files);
-        formData.append("orderPrice", $('#in-order-price').val());
         formData.append("orderArea", $('#in-order-area').val());
+        formData.append("orderSeller", seller);
+        formData.append("orderSold", isSold);
 
 
         // formData.append("img", file);
@@ -81,3 +71,13 @@ $(function () {
 
     });
 });
+
+function getCurrentUser() {
+    let rsl = sessionStorage.getItem("user");
+    return (rsl === null) ? "guest" : rsl;
+}
+function getSelectedId() {
+    let rsl = sessionStorage.getItem("order-edit-selected-id");
+    sessionStorage.setItem("order-edit-selected-id", null);
+    return (rsl === null) ? 0 : rsl;
+}

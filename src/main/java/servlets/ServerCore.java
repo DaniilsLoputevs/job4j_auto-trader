@@ -1,8 +1,8 @@
 package servlets;
 
-import servlets.processing.IndexCode;
-import servlets.processing.LoginCode;
 import servlets.processing.OtherCode;
+import servlets.processing.index.IndexCode;
+import servlets.processing.index.LoginCode;
 import servlets.processing.order.Edit;
 import util.CustomLog;
 import util.TriConsumer;
@@ -32,12 +32,11 @@ public class ServerCore {
 
         serverCommands.put("REG_USER", LoginCode::registerUser);
         serverCommands.put("AUTH_USER", LoginCode::authUser);
-
         serverCommands.put("INDEX:GET_TABLE", IndexCode::getTable);
 
-        serverCommands.put("ORDER_EDIT:SAVE_ORDER", Edit::saveOrder);
-
         /* Multi-Part-Form requests */
+
+        serverCommands.put("ORDER_EDIT:SAVE_ORDER", Edit::saveOrder);
 
         serverCommands.put("OTHER:GET_IMG_ALBUM_BY_ID", OtherCode::getImgAlbumById);
         serverCommands.put("OTHER:SAVE_IMG_ALBUM", OtherCode::saveImgAlbum);

@@ -1,4 +1,4 @@
-package servlets.processing;
+package servlets.processing.index;
 
 import models.User;
 import stores.UserStore;

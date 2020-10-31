@@ -1,4 +1,4 @@
-package servlets.processing;
+package servlets.processing.index;
 
 import models.Order;
 import models.webmapping.JsonMapper;
