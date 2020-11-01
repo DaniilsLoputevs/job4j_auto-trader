@@ -72,10 +72,6 @@ $(function () {
     });
 });
 
-function getCurrentUser() {
-    let rsl = sessionStorage.getItem("user");
-    return (rsl === null) ? "guest" : rsl;
-}
 function getSelectedId() {
     let rsl = sessionStorage.getItem("order-edit-selected-id");
     sessionStorage.setItem("order-edit-selected-id", null);

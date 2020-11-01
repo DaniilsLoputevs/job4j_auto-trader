@@ -56,6 +56,11 @@ function checkAuth() {
     return rsl;
 }
 
+function getCurrentUser() {
+    let rsl = sessionStorage.getItem("user");
+    return (rsl === null) ? "guest" : rsl;
+}
+
 /* other util method */
 
 // function substringFrom(String, start, charsSkipFromEnd) {

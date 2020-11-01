@@ -7,6 +7,7 @@ import models.User;
 import stores.OrderStore;
 import stores.UserStore;
 import util.CustomLog;
+import util.ResponseWrite;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -64,6 +65,15 @@ public class Edit {
 
         CustomLog.log("FINISH saveOrder()");
     }
+
+    public static void getOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        Order order = OrderStore.instOf().getById(orderId);
+        ResponseWrite.writeJacksonObjectMapper(resp, order);
+    }
+
+
+
 
     private static List<byte[]> extractImgFromRequest(HttpServletRequest req) {
         List<byte[]> rsl = new ArrayList<>();
