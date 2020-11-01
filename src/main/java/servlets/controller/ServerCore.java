@@ -1,4 +1,4 @@
-package servlets;
+package servlets.controller;
 
 import servlets.processing.OtherCode;
 import servlets.processing.index.IndexCode;
@@ -37,6 +37,7 @@ public class ServerCore {
         /* Multi-Part-Form requests */
 
         serverCommands.put("ORDER_EDIT:SAVE_ORDER", Edit::saveOrder);
+        serverCommands.put("ORDER_EDIT:GET_ORDER", Edit::getOrder);
 
         serverCommands.put("OTHER:GET_IMG_ALBUM_BY_ID", OtherCode::getImgAlbumById);
         serverCommands.put("OTHER:SAVE_IMG_ALBUM", OtherCode::saveImgAlbum);

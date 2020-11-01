@@ -36,9 +36,11 @@ $(document).ready(() => {
             $("#in-order-area").val(parseData.area);
 
 
-            // const imgTag = document.getElementById('in-order-img-show')
-            // imgTag.src = parseData.imgAlbum.imgList[0];
-            // imgTag.src = window.URL.createObjectURL(parseData.imgAlbum.imgList[0]);
+            document.getElementById('in-order-img-show')
+                .setAttribute(
+                    'src',
+                    "data:image/png;base64," + parseData.img.imgBase64
+                );
         });
 
     }

@@ -2,6 +2,8 @@ package util;
 
 import stores.OrderStore;
 
+import java.util.StringJoiner;
+
 /**
  * manual tool - not for production.
  */
@@ -47,9 +49,123 @@ public class ManualExperiment {
 //            System.out.println("sout: " + each.getImgAlbum().getImgList());
 //        }
 
-        System.out.println(OrderStore.instOf().getById(1));
+//        System.out.println(OrderStore.instOf().getById(1));
 
+
+//        var user = UserStore.instOf().getByName("root");
+//        CustomLog.log("user", user);
+//        CustomLog.log("view", UserView.jsonMapOnlyName(user));
+
+        var listAll = OrderStore.instOf().getById(2);
+//        var rsl = ViewJsonMapper.ordersForIndexTable(listAll);
+        CustomLog.log("rsl", listAll);
+
+
+
+
+
+//        var model = new Model(0, "model");
+//        var dto = DtoModel.of(model);
+//
+//        var container = new Container(dto);
+//
+//        System.out.println(container.getModel().getId());
+//
+//        System.out.println(container);
     }
+    static class Container {
+        private Model model;
+
+        public Container(Model model) {
+            this.model = model;
+        }
+
+        public Model getModel() {
+            return model;
+        }
+
+        public void setModel(Model model) {
+            this.model = model;
+        }
+
+        @Override
+        public String toString() {
+            return new StringJoiner(", ", Container.class.getSimpleName() + "[", "]")
+                    .add("model=" + model)
+                    .toString();
+        }
+    }
+
+    static class Model {
+        private int id;
+        private String name;
+
+        public Model(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return new StringJoiner(", ", Model.class.getSimpleName() + "[", "]")
+                    .add("id=" + id)
+                    .add("name='" + name + "'")
+                    .toString();
+        }
+    }
+
+    static class DtoModel extends Model{
+        private String name;
+
+
+        public DtoModel(int id, String name, String name1) {
+            super(id, name);
+            this.name = name1;
+        }
+
+        //        public DtoModel(String name) {
+//            this.name = name;
+//        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public static DtoModel of(Model model) {
+            DtoModel dto = new DtoModel(-1, null, null);
+            dto.setName(model.name);
+            return dto;
+        }
+
+        @Override
+        public String toString() {
+            return new StringJoiner(", ", DtoModel.class.getSimpleName() + "[", "]")
+                    .add("name='" + name + "'")
+                    .toString();
+        }
+    }
+
+
 
 
 

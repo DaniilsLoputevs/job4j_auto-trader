@@ -4,6 +4,7 @@ import models.Car;
 import models.ImgAlbum;
 import models.Order;
 import models.User;
+import models.views.OrderView;
 import stores.OrderStore;
 import stores.UserStore;
 import util.CustomLog;
@@ -69,7 +70,8 @@ public class Edit {
     public static void getOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
         int orderId = Integer.parseInt(req.getParameter("orderId"));
         Order order = OrderStore.instOf().getById(orderId);
-        ResponseWrite.writeJacksonObjectMapper(resp, order);
+        String jsonStringDto = OrderView.jsonMapFullAsUsual(order);
+        ResponseWrite.write(resp, jsonStringDto);
     }
 
 

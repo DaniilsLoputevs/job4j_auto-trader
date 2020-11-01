@@ -1,7 +1,7 @@
 package servlets.processing.index;
 
 import models.Order;
-import models.webmapping.JsonMapper;
+import models.views.ViewJsonMapper;
 import stores.OrderStore;
 import util.CustomLog;
 import util.ResponseWrite;
@@ -19,7 +19,7 @@ public class IndexCode {
         resp.setContentType("text/json");
         List<Order> ordersList = OrderStore.instOf().getAll();
 
-        String ordersJson = JsonMapper.ordersForIndexTable(ordersList);
+        String ordersJson = ViewJsonMapper.ordersForIndexTable(ordersList);
 
         ResponseWrite.write(resp, ordersJson);
         CustomLog.log("FINISH getTable()");

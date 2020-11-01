@@ -34,9 +34,10 @@ public class OrderStore {
         String hql = "select distinct mt from Order as mt "
                 + "join fetch mt.car "
                 + "join fetch mt.seller "
-                + "join fetch mt.imgAlbum.imgList";
+                + "join fetch mt.imgAlbum.imgList "
+                + "where mt.id=" + id;
         List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
-        return getOrderOrEmpty(temp);
+        return getFirstOrderOrEmpty(temp);
 
 //        var temp = core.getBy("id", id);
 //        return getOrderOrEmptyUser(temp);
@@ -45,7 +46,7 @@ public class OrderStore {
     @Deprecated
     public Order getByName(String name) {
         var temp = core.getBy("name", name);
-        return getOrderOrEmpty(temp);
+        return getFirstOrderOrEmpty(temp);
     }
 
     public void delete(int id) {
@@ -58,7 +59,7 @@ public class OrderStore {
         core.update(order);
     }
 
-    private Order getOrderOrEmpty(List<Order> list) {
+    private Order getFirstOrderOrEmpty(List<Order> list) {
         return (list.isEmpty()) ? new Order() : list.get(0);
     }
 }

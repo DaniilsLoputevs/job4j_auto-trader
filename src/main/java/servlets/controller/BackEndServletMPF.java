@@ -1,4 +1,4 @@
-package servlets;
+package servlets.controller;
 
 import util.CustomLog;
 

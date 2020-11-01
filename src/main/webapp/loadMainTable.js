@@ -12,7 +12,7 @@ $(document).ready(() => {
             let order = data[i];
 
             let id = order.id;
-            let imgBase64 = "data:image/png;base64," + order.imgBase64;
+            let imgBase64 = "data:image/png;base64," + order.img.imgBase64;
             let desc = order.desc;
             let price = order.price;
 
@@ -28,7 +28,7 @@ $(document).ready(() => {
             let carFuelType = car.fuelType;
 
             let area = order.area;
-            let seller = order.seller;
+            let seller = order.seller.name;
             let isSold = (order.isSold) ? "Sold" : "Can buy";
 
             let isSoldColor = (order.isSold) ? "#f00" : "#2bc25b";
