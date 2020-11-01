@@ -36,7 +36,7 @@ $(document).ready(() => {
             let isSoldColor = (order.isSold) ? "#f00" : "#2bc25b";
 
             finalHtml += `
-                <div id="${id}" class="row">
+                <div id="order-id=${id}" class="row">
                 <img width="250" height="250" src="${imgBase64}" alt="IMG NOT FOUND">
                 <p style="font-size: 24px">
                 ${carBrand} ${carModel}, ${carYear} ${carDoorCount}<br>

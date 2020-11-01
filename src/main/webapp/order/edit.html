@@ -21,25 +21,13 @@
 
     <script src="../webUtil.js"></script>
     <script src="../order/saveOrder.js"></script>
+    <script src="../order/supportScripts.js"></script>
 
     <title>Order Edit</title>
 </head>
 <body>
 
 <h1>ORDER EDIT</h1>
-
-<!--<form enctype="application/x-www-form-urlencoded">-->
-<!--    <input id="input-file-test-upload" type="file">-->
-<!--    <button id="btn-test" type="button">submit file</button>-->
-<!--</form>-->
-
-
-<!--    <input id="input-file-test-upload" type="file">-->
-<!--    <button id="btn-save-order" type="button">submit order</button>-->
-
-
-<!--<div class="row">-->
-
 
     <form class="needs-validation" enctype="multipart/form-data">
         <div class="form-row px-4">
@@ -110,12 +98,6 @@
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label for="in-order-img">Image</label>
-                <div class="input-group">
-                    <input type="file" class="form-control" id="in-order-img" required>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
                 <label for="in-order-price">Price</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="in-order-price"
@@ -136,6 +118,14 @@
                            placeholder="example: hidden" required>
                 </div>
             </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label>Image</label>
+            <div class="input-group">
+                <img id="in-order-img-show" src="#" alt="" />
+            </div>
+            <input type="file" class="form-control" id="in-order-img" required>
         </div>
 
         <div class="form-group px-4">

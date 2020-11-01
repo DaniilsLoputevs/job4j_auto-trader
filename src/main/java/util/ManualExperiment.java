@@ -1,5 +1,7 @@
 package util;
 
+import stores.OrderStore;
+
 /**
  * manual tool - not for production.
  */
@@ -45,7 +47,7 @@ public class ManualExperiment {
 //            System.out.println("sout: " + each.getImgAlbum().getImgList());
 //        }
 
-
+        System.out.println(OrderStore.instOf().getById(1));
 
     }
 
