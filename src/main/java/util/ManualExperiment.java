@@ -1,8 +1,7 @@
 package util;
 
-import stores.OrderStore;
-
-import java.util.StringJoiner;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * manual tool - not for production.
@@ -56,62 +55,53 @@ public class ManualExperiment {
 //        CustomLog.log("user", user);
 //        CustomLog.log("view", UserView.jsonMapOnlyName(user));
 
-        var listAll = OrderStore.instOf().getById(2);
+//        var listAll = OrderStore.instOf().getById(2);
 //        var rsl = ViewJsonMapper.ordersForIndexTable(listAll);
-        CustomLog.log("rsl", listAll);
+//        CustomLog.log("rsl", listAll);
 
 
 
 
+//        new Time(2 + 1 + 1 + 2,
+//                20 + 30 + 30 + 30).showSumTime();
 
-//        var model = new Model(0, "model");
-//        var dto = DtoModel.of(model);
-//
-//        var container = new Container(dto);
-//
-//        System.out.println(container.getModel().getId());
-//
-//        System.out.println(container);
+//        1  nov - session 12 : 11:00 - 13:20 (2:20)
+//        1  nov - session 13 : 14:00 - 15:30 (1:30)
+//        1  nov - session 14 : 17:20 - 18:50 (1:30)
+//        1  nov - session 14 : 19:40 - 22:10 (2:30)
+
+
+
+
+        var model = new Model();
+        CustomLog.log("init", model.getName());
+        updFieldIfNotEqual(model::getName, "newName", model::setName);
+        CustomLog.log("upd", model.getName());
+
+
+
     }
-    static class Container {
-        private Model model;
 
-        public Container(Model model) {
-            this.model = model;
-        }
-
-        public Model getModel() {
-            return model;
-        }
-
-        public void setModel(Model model) {
-            this.model = model;
-        }
-
-        @Override
-        public String toString() {
-            return new StringJoiner(", ", Container.class.getSimpleName() + "[", "]")
-                    .add("model=" + model)
-                    .toString();
+    /**
+     * short fort for upd field of object.
+     *
+     * @param getter - method reference. Example: obj::getName
+     * @param newVal - value that set if not equal.
+     * @param setter - method reference. Example: obj::setName
+     */
+    private static void updFieldIfNotEqual(Supplier<String> getter, String newVal, Consumer<String> setter) {
+        String oldVal = getter.get();
+        if (oldVal != null) {
+            if (!getter.get().equals(newVal)) {
+                setter.accept(newVal);
+            }
+        } else {
+            setter.accept(newVal);
         }
     }
 
     static class Model {
-        private int id;
         private String name;
-
-        public Model(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
 
         public String getName() {
             return name;
@@ -119,49 +109,27 @@ public class ManualExperiment {
 
         public void setName(String name) {
             this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return new StringJoiner(", ", Model.class.getSimpleName() + "[", "]")
-                    .add("id=" + id)
-                    .add("name='" + name + "'")
-                    .toString();
         }
     }
 
-    static class DtoModel extends Model{
-        private String name;
 
+    static class Time {
+        int hours;
+        int mins;
 
-        public DtoModel(int id, String name, String name1) {
-            super(id, name);
-            this.name = name1;
+        public Time(int hours, int mins) {
+            this.hours = hours;
+            this.mins = mins;
         }
 
-        //        public DtoModel(String name) {
-//            this.name = name;
-//        }
+        public void showSumTime() {
+            int totalMin = (hours * 60) + mins;
+            int finalHours = totalMin / 60;
+            int finalMin = totalMin % 60;
 
-        public String getName() {
-            return name;
-        }
+            System.out.println("Hours: " + finalHours);
+            System.out.println("Min: " + finalMin);
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public static DtoModel of(Model model) {
-            DtoModel dto = new DtoModel(-1, null, null);
-            dto.setName(model.name);
-            return dto;
-        }
-
-        @Override
-        public String toString() {
-            return new StringJoiner(", ", DtoModel.class.getSimpleName() + "[", "]")
-                    .add("name='" + name + "'")
-                    .toString();
         }
     }
 

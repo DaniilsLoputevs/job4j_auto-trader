@@ -32,7 +32,9 @@ $(function () {
             enctype: 'multipart/form-data',
             data: formData
         }).done((data) => {
-            alert("request - yes,\r\n response - yes");
+            alert("Order save");
+            sessionStorage.setItem("order-edit-selected-id", null);
+            goToHtmlAuth("index");
         }).fail((err) => {
             alert("Error!!! - See console");
             console.log(err);
@@ -53,6 +55,5 @@ function getCurrentImg() {
 
 function getSelectedId() {
     const rsl = sessionStorage.getItem("order-edit-selected-id");
-    // sessionStorage.setItem("order-edit-selected-id", null);
     return (rsl === null || rsl === "null") ? 0 : rsl;
 }

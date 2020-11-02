@@ -74,7 +74,7 @@ public class Edit {
         );
 
         ImgAlbum album = new ImgAlbum(0, extractImgFromRequest(req));
-        User seller = UserStore.instOf().getByName(getStr(req,"orderSeller"));
+        User seller = UserStore.instOf().getByName(getStr(req, "orderSeller"));
 
         return new Order(0,
                 album,

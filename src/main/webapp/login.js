@@ -27,6 +27,7 @@ $(function () {
                     sessionStorage.setItem("user", parseData);
                     alert("Authorization success!");
                 }
+                refreshCurrentPage();
             }).fail((err) => {
                 alert("Error!!! - See console");
                 console.log(err);

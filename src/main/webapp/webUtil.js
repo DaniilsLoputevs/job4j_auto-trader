@@ -5,11 +5,11 @@
  * @param String - name of HTML file with packages name.
  */
 function goToHtmlAuth(String) {
-    // if (checkAuth() >= 0) {
+    if (checkAuth() >= 0) {
     window.location.href = getContextPath() + "/" + String + ".html";
-    // } else {
-    //     alert("You need to be authorized user, to use this option.");
-    // }
+    } else {
+        alert("You need to be authorized user, to use this option.");
+    }
 }
 
 /**

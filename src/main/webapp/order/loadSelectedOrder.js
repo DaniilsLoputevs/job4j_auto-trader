@@ -5,7 +5,6 @@
  */
 $(document).ready(() => {
     const selectedId = sessionStorage.getItem("order-edit-selected-id");
-    alert("id is " + selectedId);
 
     if (selectedId !== null) {
         $.ajax({

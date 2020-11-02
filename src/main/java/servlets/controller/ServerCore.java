@@ -3,6 +3,7 @@ package servlets.controller;
 import servlets.processing.index.IndexCode;
 import servlets.processing.index.LoginCode;
 import servlets.processing.order.Edit;
+import servlets.processing.order.View;
 import util.CustomLog;
 import util.TriConsumer;
 
@@ -38,6 +39,8 @@ public class ServerCore {
 
         serverCommands.put("ORDER_EDIT:SAVE_ORDER", Edit::saveOrder);
         serverCommands.put("ORDER_EDIT:GET_ORDER", Edit::getOrder);
+
+        serverCommands.put("ORDER_VIEW:GET_ORDER", View::getOrder);
 
         return serverCommands;
     }

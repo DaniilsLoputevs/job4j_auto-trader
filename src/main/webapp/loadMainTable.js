@@ -40,6 +40,7 @@ $(document).ready(() => {
                 + `<div class="row">`
                 + `<img width="250" height="250" src="${imgBase64}" alt="IMG NOT FOUND">`
                 + `<p style="font-size: 24px">`
+                + `<a id="view-id-${id}" href="#" class="show-view-link">view full page</a><br>`
                 + `${carBrand} ${carModel}, ${carYear} ${carDoorCount}<br>`
                 + `<span style="font-size: 32px">${price}</span>`
                 + `${carEngine},`
@@ -75,10 +76,19 @@ $(document).ready(() => {
  * selector didn't find tags, cause HTML doesn't contains it.
  */
 function setEditIconFunctionality() {
+    //  edit btn
     $(".fas").click(function () {
         // extract order id from tag id.
         const editId = this.id.split("-")[2];
         sessionStorage.setItem("order-edit-selected-id", editId);
         goToHtmlAuth("order/edit");
+    });
+    // open full view page
+
+    $(".show-view-link").click(function () {
+        // extract order id from tag id.
+        const editId = this.id.split("-")[2];
+        sessionStorage.setItem("order-view-selected-id", editId);
+        goToHtmlAuth("order/view");
     });
 }
