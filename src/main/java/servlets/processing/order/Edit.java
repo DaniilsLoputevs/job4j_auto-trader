@@ -7,7 +7,6 @@ import models.User;
 import models.views.OrderView;
 import stores.OrderStore;
 import stores.UserStore;
-import util.CustomLog;
 import util.ResponseWrite;
 
 import javax.servlet.ServletException;
@@ -18,63 +17,113 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Edit {
-    public static void saveOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
-        CustomLog.log("START saveOrder()");
+import static util.ModelFieldUpd.updFieldIfNotEqual;
+import static util.RequestUtil.*;
 
-        int orderId = Integer.parseInt(req.getParameter("orderId"));
-//        int carId = Integer.parseInt(req.getParameter("orderId"));
+public class Edit {
+    /**
+     * add new OR upd exists order.
+     *
+     * @param req     -
+     * @param resp    -
+     * @param servlet -
+     */
+    public static void saveOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
+//        CustomLog.log("START saveOrder()");
+
+        int orderId = getInt(req, "orderId");
         Order order;
+//        CustomLog.log("orderId:", orderId);
 
         if (orderId == 0) {
-            Car car = new Car(
-                    Integer.parseInt(req.getParameter("orderId")),
-                    req.getParameter("carBrand"),
-                    req.getParameter("carModel"),
-                    Integer.parseInt(req.getParameter("carYear")),
-                    Integer.parseInt(req.getParameter("carDoorCount")),
-                    Integer.parseInt(req.getParameter("carMileage")),
-                    req.getParameter("carEngine"),
-                    req.getParameter("carBody"),
-                    req.getParameter("carTransmission"),
-                    req.getParameter("carFuelType")
-            );
-            User seller = UserStore.instOf().getByName(req.getParameter("orderSeller"));
-
-            ImgAlbum album = new ImgAlbum(0, extractImgFromRequest(req));
-
-            order = new Order(0,
-                    album,
-                    req.getParameter("orderDesc"),
-                    Integer.parseInt(req.getParameter("orderPrice")),
-                    car,
-                    req.getParameter("orderArea"),
-                    seller,
-                    Boolean.parseBoolean(req.getParameter("orderSold"))
-                    );
-
-            CustomLog.log("order", order);
-
+//            CustomLog.log("START ADD()");
+            order = createOrderByRequestParams(req);
             OrderStore.instOf().add(order);
         } else {
+//            CustomLog.log("START UPD()");
             order = OrderStore.instOf().getById(orderId);
-
-//            OrderStore.instOf().update(order);
+            updateOrderByRequestParams(order, req);
+            OrderStore.instOf().update(order);
         }
-
-        CustomLog.log("FINISH saveOrder()");
+//        CustomLog.log("FINISH saveOrder()");
     }
 
+
     public static void getOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
-        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        int orderId = getInt(req, "orderId");
         Order order = OrderStore.instOf().getById(orderId);
         String jsonStringDto = OrderView.jsonMapFullAsUsual(order);
         ResponseWrite.write(resp, jsonStringDto);
     }
 
+    private static Order createOrderByRequestParams(HttpServletRequest req) {
+        Car car = new Car(
+                getInt(req, "orderId"),
+                getStr(req, "carBrand"),
+                getStr(req, "carModel"),
+                getInt(req, "carYear"),
+                getInt(req, "carDoorCount"),
+                getInt(req, "carMileage"),
+                getStr(req, "carEngine"),
+                getStr(req, "carBody"),
+                getStr(req, "carTransmission"),
+                getStr(req, "carFuelType")
+        );
 
+        ImgAlbum album = new ImgAlbum(0, extractImgFromRequest(req));
+        User seller = UserStore.instOf().getByName(getStr(req,"orderSeller"));
+
+        return new Order(0,
+                album,
+                getStr(req, "orderDesc"),
+                getInt(req, "orderPrice"),
+                car,
+                getStr(req, "orderArea"),
+                seller,
+                getBool(req, "orderSold")
+        );
+    }
+
+    /**
+     * set new value fot Order fields if it isn't equals with new.
+     * Fields that miss upd check because don't need it: id, seller, isSold.
+     *
+     * @param ord -
+     * @param req -
+     */
+    private static void updateOrderByRequestParams(Order ord, HttpServletRequest req) {
+        Car car = ord.getCar();
+
+        updOrderImgAlbumIfNotNull(req, ord);
+
+        updFieldIfNotEqual(ord::getDescription, getStr(req, "orderDesc"), ord::setDescription);
+        updFieldIfNotEqual(ord::getPrice, getInt(req, "orderPrice"), ord::setPrice);
+        updFieldIfNotEqual(ord::getArea, getStr(req, "orderArea"), ord::setArea);
+
+        updFieldIfNotEqual(car::getBrand, getStr(req, "carBrand"), car::setBrand);
+        updFieldIfNotEqual(car::getModel, getStr(req, "carModel"), car::setModel);
+        updFieldIfNotEqual(car::getYear, getInt(req, "carYear"), car::setYear);
+        updFieldIfNotEqual(car::getDoorCount, getInt(req, "carDoorCount"), car::setDoorCount);
+        updFieldIfNotEqual(car::getMileage, getInt(req, "carMileage"), car::setMileage);
+        updFieldIfNotEqual(car::getEngine, getStr(req, "carEngine"), car::setEngine);
+        updFieldIfNotEqual(car::getBody, getStr(req, "carBody"), car::setBody);
+        updFieldIfNotEqual(car::getTransmission, getStr(req, "carTransmission"), car::setTransmission);
+        updFieldIfNotEqual(car::getFuelType, getStr(req, "carFuelType"), car::setFuelType);
+    }
+
+    private static void updOrderImgAlbumIfNotNull(HttpServletRequest req, Order order) {
+        try {
+            Part filePart = req.getPart("orderImg");
+            if (filePart != null) {
+                order.setImgAlbum(new ImgAlbum(0, extractImgFromRequest(req)));
+            }
+        } catch (IOException | ServletException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private static List<byte[]> extractImgFromRequest(HttpServletRequest req) {
@@ -84,6 +133,7 @@ public class Edit {
 
             try (InputStream fileContent = filePart.getInputStream()) {
                 rsl.add(fileContent.readAllBytes());
+                System.out.println("bytes: " + Arrays.toString(fileContent.readAllBytes()));
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -8,11 +8,12 @@ import static util.JsonCollector.wrapObject;
 public class UserView {
 
     /**
+     * It need for avoid send user private data. Login, Password and etc.
      *
      * @param user model for prepare to front.
      * @return (String) json obj:
      * {
-     *     "name":Sting
+     * "name":Sting
      * }
      */
     public static String jsonMapOnlyName(User user) {

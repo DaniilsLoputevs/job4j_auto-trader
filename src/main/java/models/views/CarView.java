@@ -18,7 +18,7 @@ public class CarView {
      *  	"model":String,
      *  	"year":int,
      *      "doorCount":int,
-     *      "doorCount":int,
+     *      "mileage":int,
      *      "engine":String,
      * 	    "body":String,
      * 	    "transmission":String

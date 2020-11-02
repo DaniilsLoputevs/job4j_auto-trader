@@ -19,9 +19,8 @@ $(function () {
             }).done((data) => {
                 let parseData = JSON.parse(data);
 
-                if (parseData === "user Not Founded.") {
-                    alert(parseData);
-                } else if (parseData === "incorrect Password.") {
+                if (parseData === "user Not Founded."
+                    || parseData === "incorrect Password.") {
                     alert(parseData);
                 } else {
                     document.getElementById("link-login").innerText = parseData;

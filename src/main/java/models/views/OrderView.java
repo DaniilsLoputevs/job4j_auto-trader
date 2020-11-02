@@ -8,29 +8,18 @@ import static util.JsonCollector.wrapObject;
 public class OrderView {
 
     /**
-     * @deprecated
-     * It need for avoid send user private data. Login, Password and etc.
+
      *
      * @param order -
      * @return (String) json obj:
      * {
      * "id":int,
-     * "img":String
+     * "img":MappedObj(ImgAlbumView), - first img encoded Base64
      * "desc":String,
      * "price":int,
-     * "car": {
-     *  	"brand":String,
-     *  	"model":String,
-     *  	"year":int,
-     *      "doorCount":int,
-     *      "doorCount":int,
-     *      "engine":String,
-     * 	    "body":String,
-     * 	    "transmission":String
-     * 	    "fuelType":String,
-     * },
+     * "car": MappedObj(Car), - full mapped
      * "area":String,
-     * "seller":String,
+     * "seller":MappedObj(User), - only name
      * "isSold":boolean
      * }
      */

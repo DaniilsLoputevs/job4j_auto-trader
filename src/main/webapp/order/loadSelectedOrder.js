@@ -4,7 +4,7 @@
  * if not null, load data from back-end and set into inputs.
  */
 $(document).ready(() => {
-    const selectedId = sessionStorage.getItem("selected-edit-order-id");
+    const selectedId = sessionStorage.getItem("order-edit-selected-id");
     alert("id is " + selectedId);
 
     if (selectedId !== null) {
@@ -18,7 +18,7 @@ $(document).ready(() => {
             }
         }).done((data) => {
             const parseData = JSON.parse(data);
-            console.log("parseData", parseData);
+            // console.log("parseData", parseData);
 
             $("#in-car-brand").val(parseData.car.brand);
             $("#in-car-model").val(parseData.car.model);
@@ -34,6 +34,7 @@ $(document).ready(() => {
             $("#in-order-desc").val(parseData.description);
             $("#in-order-price").val(parseData.price);
             $("#in-order-area").val(parseData.area);
+            $("#in-order-is-sold").val(parseData.isSold);
 
 
             document.getElementById('in-order-img-show')

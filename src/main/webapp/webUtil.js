@@ -6,7 +6,7 @@
  */
 function goToHtmlAuth(String) {
     // if (checkAuth() >= 0) {
-        window.location.href = getContextPath() + "/" + String + ".html";
+    window.location.href = getContextPath() + "/" + String + ".html";
     // } else {
     //     alert("You need to be authorized user, to use this option.");
     // }
@@ -52,7 +52,6 @@ function checkAuth() {
     } else { // any other Authorised user.
         rsl = 1;
     }
-
     return rsl;
 }
 
@@ -66,3 +65,14 @@ function getCurrentUser() {
 // function substringFrom(String, start, charsSkipFromEnd) {
 //     return String.substring(start, String.length - charsSkipFromEnd);
 // }
+
+
+/* manual script activation: for try js code */
+
+// <button type="button" id="manual-script-run">Script test</button>
+
+// $(function () {
+//     $('#manual-script-run').click(() => {
+//         // write script here
+//     })
+// });

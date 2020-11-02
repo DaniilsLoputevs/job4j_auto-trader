@@ -13,25 +13,16 @@ import java.util.List;
 public class ViewJsonMapper {
 
     /**
-     * @deprecated
      * @param orders -
-     * @return List of json objects: {
+     * @return List of json objects:
+     * {
      * "id":int,
+     * "img":MappedObj(ImgAlbumView), - first img encoded Base64
      * "desc":String,
      * "price":int,
-     * "car": {
-     *  	"brand":String,
-     *  	"model":String,
-     *  	"year":int,
-     *      "doorCount":int,
-     *      "doorCount":int,
-     *      "engine":String,
-     * 	    "body":String,
-     * 	    "transmission":String
-     * 	    "fuelType":String,
-     * },
+     * "car": MappedObj(Car), - full mapped
      * "area":String,
-     * "seller":String,
+     * "seller":MappedObj(User), - only name
      * "isSold":boolean
      * }
      */

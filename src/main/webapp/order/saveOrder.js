@@ -1,41 +1,14 @@
 $(function () {
     $('#btn-order-save').click(() => {
         let formData = new FormData();
-        const orderId = "" + 0; // stub
-        // const orderId = getSelectedId(); // stub
-        // const carId = "" + 0; // stub
-        const seller = getCurrentUser();
-        const isSold = "" + false; // stub
-
-
-        const carBrand = $('#in-car-brand').val();
-        const carModel = $('#in-car-model').val();
-        const carYear = $('#in-car-year').val();
-        const carMileage = $('#in-car-mileage').val();
-        const carDoorCount = $('#in-car-door-count').val();
-        const carEngine = $('#in-car-engine').val();
-        const carBody = $('#in-car-body').val();
-        const carTransmission = $('#in-car-transmission').val();
-        const carFuelType = $('#in-car-fuel-type').val();
-
-        const orderDesc = $('#in-order-desc').val();
-        const orderImg = $('#in-order-img')[0].files;
-        const orderPrice = $('#in-order-price').val();
-        const orderArea = $('#in-order-area').val();
-
-        // const file = $('#input-file-test-upload')[0].files;
-        const file = orderImg;
-
-        alert("Script work!!!");
-        // console.log("img", orderImg);
+        const orderId = "" + getSelectedId();
 
         formData.append("server_action", "ORDER_EDIT:SAVE_ORDER");
         formData.append("orderId", orderId);
-        formData.append("orderImg", $('#in-order-img')[0].files);
+        formData.append("orderImg", getCurrentImg());
         formData.append("orderDesc", $('#in-order-desc').val());
         formData.append("orderPrice", $('#in-order-price').val());
 
-        // formData.append("carId", carId);
         formData.append("carBrand", $('#in-car-brand').val());
         formData.append("carModel", $('#in-car-model').val());
         formData.append("carYear", $('#in-car-year').val());
@@ -47,12 +20,8 @@ $(function () {
         formData.append("carFuelType",$('#in-car-fuel-type').val());
 
         formData.append("orderArea", $('#in-order-area').val());
-        formData.append("orderSeller", seller);
-        formData.append("orderSold", isSold);
-
-
-        // formData.append("img", file);
-        // console.log("file", file);
+        formData.append("orderSeller", getCurrentUser());
+        formData.append("orderSold", $('#in-order-is-sold').val());
 
         $.ajax({
             type: 'POST',
@@ -72,8 +41,18 @@ $(function () {
     });
 });
 
+function getCurrentImg() {
+    const imgTag = document.getElementById('in-order-img-show');
+    const imgSrc = imgTag.getAttribute('src');
+    if (imgSrc.startsWith("blob:http://")) {
+        return $('#in-order-img')[0].files[0];
+    } else {
+        return null;
+    }
+}
+
 function getSelectedId() {
-    let rsl = sessionStorage.getItem("order-edit-selected-id");
-    sessionStorage.setItem("order-edit-selected-id", null);
-    return (rsl === null) ? 0 : rsl;
+    const rsl = sessionStorage.getItem("order-edit-selected-id");
+    // sessionStorage.setItem("order-edit-selected-id", null);
+    return (rsl === null || rsl === "null") ? 0 : rsl;
 }

@@ -2,23 +2,20 @@ package servlets.processing.index;
 
 import models.User;
 import stores.UserStore;
-import util.CustomLog;
 import util.ResponseWrite;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static util.RequestUtil.getStr;
+
 public class LoginCode {
 
     public static void registerUser(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
-        String desc = req.getParameter("desc");
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-
-        CustomLog.log("desc", desc);
-        CustomLog.log("email", email);
-        CustomLog.log("password", password);
+        String desc = getStr(req,"desc");
+        String email = getStr(req,"email");
+        String password = getStr(req,"password");
 
         UserStore.instOf().add(new User(-1, desc, email, password));
     }
@@ -26,8 +23,8 @@ public class LoginCode {
     public static void authUser(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
         resp.setContentType("text/json");
 
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+        String email = getStr(req,"email");
+        String password = getStr(req,"password");
 
         User user = UserStore.instOf().getByEmail(email);
         String answer;

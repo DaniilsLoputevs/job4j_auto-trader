@@ -78,7 +78,7 @@ function setEditIconFunctionality() {
     $(".fas").click(function () {
         // extract order id from tag id.
         const editId = this.id.split("-")[2];
-        sessionStorage.setItem("selected-edit-order-id", editId);
+        sessionStorage.setItem("order-edit-selected-id", editId);
         goToHtmlAuth("order/edit");
     });
 }
