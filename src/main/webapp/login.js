@@ -12,7 +12,7 @@ $(function () {
                 crossdomain: true,
                 dataType: 'text',
                 data: {
-                    server_action: "AUTH_USER",
+                    server_action: "INDEX:AUTH_USER",
                     email: email,
                     password: password,
                 },
@@ -55,7 +55,7 @@ $(function () {
                 crossdomain: true,
                 dataType: 'text',
                 data: {
-                    server_action: "REG_USER",
+                    server_action: "INDEX:REG_USER",
                     name: name,
                     password: password,
                     email: email,

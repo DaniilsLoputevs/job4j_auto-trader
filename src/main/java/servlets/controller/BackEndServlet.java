@@ -1,6 +1,7 @@
 package servlets.controller;
 
-import util.CustomLog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,11 +15,14 @@ import java.io.IOException;
  */
 @WebServlet(name = "BackEndServlet", value = "/back-end")
 public class BackEndServlet extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(BackEndServlet.class);
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("server_action");
 
-        CustomLog.log("BackEndServlet: server_action", action);
+        LOG.info("server_action: {}", action);
 
         ServerCore.processing(req, resp, this, action);
     }
@@ -27,7 +31,7 @@ public class BackEndServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("server_action");
 
-        CustomLog.log("BackEndServlet: server_action", action);
+        LOG.info("server_action: {}", action);
 
         ServerCore.processing(req, resp, this, action);
     }

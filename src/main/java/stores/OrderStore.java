@@ -43,9 +43,13 @@ public class OrderStore {
 //        return getOrderOrEmptyUser(temp);
     }
 
-    @Deprecated
     public Order getByName(String name) {
-        var temp = core.getBy("name", name);
+        String hql = "select distinct mt from Order as mt "
+                + "join fetch mt.car "
+                + "join fetch mt.seller "
+                + "join fetch mt.imgAlbum.imgList "
+                + "where mt.name=" + name;
+        List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
         return getFirstOrderOrEmpty(temp);
     }
 

@@ -1,12 +1,18 @@
 package util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+
 
 /**
  * manual tool - not for production.
  */
 public class ManualExperiment {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ManualExperiment.class);
 
     public static void main(String[] args) {
 //        var art = new File("C:/Users/Admin/Desktop/anime_devushki_bosye_6_18092134.png");
@@ -70,13 +76,38 @@ public class ManualExperiment {
 //        1  nov - session 14 : 17:20 - 18:50 (1:30)
 //        1  nov - session 14 : 19:40 - 22:10 (2:30)
 
+//        var temp = 1111;
+//        var temp = "1111";
+
+        LOG.info("just test");
+        LOG.info("just test");
+        LOG.info("just test");
+        LOG.info("just test");
 
 
 
-        var model = new Model();
-        CustomLog.log("init", model.getName());
-        updFieldIfNotEqual(model::getName, "newName", model::setName);
-        CustomLog.log("upd", model.getName());
+//        BasicConfigurator.configure();
+
+//        int exitcode = ToolRunner.run(new ViewCountDriver(), args);
+//        System.exit(exitcode);
+
+//        try {
+//            Properties props = new Properties();
+//            props.load(new FileInputStream("src/main/resources/log4j.properties"));
+//            PropertyConfigurator.configure(props);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+//        LOG.info("test logger {}", temp);
+
+
+
+
+//        var model = new Model();
+//        CustomLog.log("init", model.getName());
+//        updFieldIfNotEqual(model::getName, "newName", model::setName);
+//        CustomLog.log("upd", model.getName());
 
 
 

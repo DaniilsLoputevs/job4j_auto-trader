@@ -1,10 +1,11 @@
 package servlets.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import servlets.processing.index.IndexCode;
 import servlets.processing.index.LoginCode;
 import servlets.processing.order.Edit;
 import servlets.processing.order.View;
-import util.CustomLog;
 import util.TriConsumer;
 
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,8 @@ import java.util.Map;
  * @since 29.10.2020.
  */
 public class ServerCore {
+    private static final Logger LOG = LoggerFactory.getLogger(ServerCore.class);
+
 
     private static final Map<
             String,
@@ -30,9 +33,8 @@ public class ServerCore {
             TriConsumer<HttpServletRequest, HttpServletResponse, HttpServlet>> initServerCommands() {
         Map<String, TriConsumer<HttpServletRequest, HttpServletResponse, HttpServlet>> serverCommands = new HashMap<>();
 
-        serverCommands.put("REG_USER", LoginCode::registerUser);
-        serverCommands.put("AUTH_USER", LoginCode::authUser);
-
+        serverCommands.put("INDEX:REG_USER", LoginCode::registerUser);
+        serverCommands.put("INDEX:AUTH_USER", LoginCode::authUser);
         serverCommands.put("INDEX:GET_TABLE", IndexCode::getTable);
 
         /* Multi-Part-Form requests */
@@ -58,8 +60,8 @@ public class ServerCore {
         if (action != null) {
             action.accept(req, resp, servlet);
         } else {
-            CustomLog.log("WARNING! unknown server action: " + serverAction);
-            CustomLog.log("Please check this parameter in AJAX or in initServerCommands() method.");
+            LOG.error("Unknown server action: {}", serverAction);
+            LOG.error("Please check this parameter in AJAX or in initServerCommands() method");
         }
     }
 

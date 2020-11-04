@@ -5,6 +5,8 @@ import models.ImgAlbum;
 import models.Order;
 import models.User;
 import models.views.OrderView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import stores.OrderStore;
 import stores.UserStore;
 import util.ResponseWrite;
@@ -24,6 +26,8 @@ import static util.ModelFieldUpd.updFieldIfNotEqual;
 import static util.RequestUtil.*;
 
 public class Edit {
+    private static final Logger LOG = LoggerFactory.getLogger(Edit.class);
+
     /**
      * add new OR upd exists order.
      *
@@ -32,31 +36,31 @@ public class Edit {
      * @param servlet -
      */
     public static void saveOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
-//        CustomLog.log("START saveOrder()");
+        LOG.info("saveOrder() - START");
 
         int orderId = getInt(req, "orderId");
         Order order;
-//        CustomLog.log("orderId:", orderId);
+        LOG.info("orderId: {}", orderId);
 
         if (orderId == 0) {
-//            CustomLog.log("START ADD()");
             order = createOrderByRequestParams(req);
             OrderStore.instOf().add(order);
         } else {
-//            CustomLog.log("START UPD()");
             order = OrderStore.instOf().getById(orderId);
             updateOrderByRequestParams(order, req);
             OrderStore.instOf().update(order);
         }
-//        CustomLog.log("FINISH saveOrder()");
+        LOG.info("saveOrder() - FINISH");
     }
 
 
     public static void getOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
+        LOG.info("getOrder() - START");
         int orderId = getInt(req, "orderId");
         Order order = OrderStore.instOf().getById(orderId);
         String jsonStringDto = OrderView.jsonMapFullAsUsual(order);
         ResponseWrite.write(resp, jsonStringDto);
+        LOG.info("getOrder() - FINISH");
     }
 
     private static Order createOrderByRequestParams(HttpServletRequest req) {

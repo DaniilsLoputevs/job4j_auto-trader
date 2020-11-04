@@ -35,7 +35,7 @@ $(document).ready(() => {
 
             let area = order.area;
             let sellerName = order.seller.name;
-            let sellerEmail = order.seller.emial;
+            let sellerEmail = order.seller.email;
             let isSold = (order.isSold) ? "Sold" : "Can buy";
 
             let isSoldColor = (order.isSold) ? "#f00" : "#2bc25b";
@@ -45,7 +45,7 @@ $(document).ready(() => {
 
             finalHtml += ``
                 + `<div class="row">`
-                + `<img width="250" height="250" src="${imgBase64}" alt="IMG NOT FOUND">`
+                + `<img width="500" height="500" src="${imgBase64}" alt="IMG NOT FOUND">`
                 + `<p style="font-size: 22px">`
                 + `Price: <span style="font-size: 28px">${price}</span><br>`
                 + `Mileage: ${carMileage} <br>`

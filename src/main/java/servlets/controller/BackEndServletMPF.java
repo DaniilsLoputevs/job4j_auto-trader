@@ -1,6 +1,7 @@
 package servlets.controller;
 
-import util.CustomLog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -18,12 +19,14 @@ import java.io.IOException;
 @MultipartConfig
 @WebServlet(name = "BackEndServletMPF", value = "/back-end-mpf")
 public class BackEndServletMPF extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(BackEndServletMPF.class);
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("server_action");
 
-        CustomLog.log("BackEndServletMPF: server_action", action);
+        LOG.info("server_action: {}", action);
 
         ServerCore.processing(req, resp, this, action);
     }
@@ -32,7 +35,7 @@ public class BackEndServletMPF extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("server_action");
 
-        CustomLog.log("BackEndServletMPF: server_action", action);
+        LOG.info("server_action: {}", action);
 
         ServerCore.processing(req, resp, this, action);
     }
