@@ -31,9 +31,7 @@ public class ImgAlbumStore {
     }
 
     public void delete(int id) {
-        var temp = new ImgAlbum();
-        temp.setId(id);
-        core.delete(temp);
+        core.delete(id);
     }
 
     private ImgAlbum getImgAlbumOrEmptyUser(List<ImgAlbum> list) {

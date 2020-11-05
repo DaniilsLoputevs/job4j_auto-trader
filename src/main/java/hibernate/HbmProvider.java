@@ -38,6 +38,9 @@ public class HbmProvider {
     public <T> void saveModel(T model) {
         defaultTransaction(session -> session.save(model));
     }
+    public <T> void saveAllModel(List<T> models) {
+        voidTransaction(session -> models.forEach(session::save));
+    }
 
     public <T> void deleteModel(T model) {
         voidTransaction(session -> session.delete(model));
@@ -90,7 +93,7 @@ public class HbmProvider {
      * The same that defaultTransaction() but without return type.
      * @param action -
      */
-    public void voidTransaction(Consumer<Session> action) {
+    private void voidTransaction(Consumer<Session> action) {
         defaultTransaction(session -> {
             action.accept(session);
             return null;

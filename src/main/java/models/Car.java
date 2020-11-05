@@ -1,10 +1,13 @@
 package models;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "cars")
+@DynamicUpdate()
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +26,6 @@ public class Car {
 
     public Car() {
     }
-
-//    public Car(int id, String model, int year, String brand,
-//               String body, int doorCount, String fuelType, String transmission) {
-//        this.id = id;
-//        this.model = model;
-//        this.year = year;
-//        this.brand = brand;
-//        this.body = body;
-//        this.doorCount = doorCount;
-//        this.fuelType = fuelType;
-//        this.transmission = transmission;
-//    }
 
     public Car(int id, String brand, String model,
                int year, int doorCount, int mileage,
