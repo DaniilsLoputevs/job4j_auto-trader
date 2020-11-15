@@ -69,4 +69,5 @@ public class HbmCoreStoreApi<T> {
     public T getFirstOrEmpty(List<T> list, T empty) {
         return (list.isEmpty()) ? empty : list.get(0);
     }
+
 }

@@ -14,8 +14,8 @@ import java.util.function.Function;
  * This class is low level abstraction functionality of Hibernate.
  * This public API use for create higher abstraction level of MVC.
  *
- * @since 22.10.2020.
  * @author Daniils Loputevs(laiwiense@gmail.com)
+ * @since 22.10.2020.
  */
 public class HbmProvider {
     private final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
@@ -38,6 +38,7 @@ public class HbmProvider {
     public <T> void saveModel(T model) {
         defaultTransaction(session -> session.save(model));
     }
+
     public <T> void saveAllModel(List<T> models) {
         voidTransaction(session -> models.forEach(session::save));
     }
@@ -91,6 +92,7 @@ public class HbmProvider {
 
     /**
      * The same that defaultTransaction() but without return type.
+     *
      * @param action -
      */
     private void voidTransaction(Consumer<Session> action) {

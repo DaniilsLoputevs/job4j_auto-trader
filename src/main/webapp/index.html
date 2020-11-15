@@ -24,6 +24,7 @@
     <script src="webUtil.js"></script>
     <script src="login.js"></script>
     <script src="loadMainTable.js"></script>
+    <script src="filters.js"></script>
 
     <title>Auto-Trader</title>
 </head>
@@ -39,15 +40,44 @@
 
 <div class="container">
     <!-- toolbar with any functional buttons -->
-    <div class="row">
-        <button class="btn-primary" onclick="goToHtmlAuth('order/edit');">Place Order</button>
+    <div class="form-row">
+        <div class="col">
+            <button class="btn btn-primary" onclick="goToHtmlAuth('order/edit');">Place Order</button>
+        </div>
+
+        <div class="col">
+            <button id="btn-use-brands-filters" class="btn btn-secondary">Use filters</button>
+            <!-- filter set -->
+            <div id="container-brands-filters" class="container" style="display: none">
+
+                <div class="row border border-warning">
+                    <div class="col">
+                        <label>Toyota
+                            <input class="mark-filter" type="checkbox" value="Toyota">
+                        </label>
+                        <label>Honda
+                            <input class="mark-filter" type="checkbox" value="Honda">
+                        </label>
+                        <label>carBrand
+                            <input class="mark-filter" type="checkbox" value="carBrand">
+                        </label>
+                    </div>
+                </div>
+
+                <button id="btn-submit-brands-filters" class="btn btn-info">Submit filters</button>
+                <button id="btn-reset-brands-filters" class="btn btn-warning">Reset filters</button>
+            </div>
+        </div>
+
+        <div class="col">
+            <button type="button" id="manual-script-run">Script test</button>
+        </div>
     </div>
 
     <div class="column pt-2" id="order-list">
         <!-- script load data here -->
     </div>
 </div>
-
 
 
 <!-- auth modal window -->

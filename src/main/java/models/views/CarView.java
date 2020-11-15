@@ -7,8 +7,6 @@ import static util.JsonCollector.wrapObject;
 
 public class CarView {
 
-
-
     /**
      *
      * @param car model for prepare to front.
@@ -26,7 +24,7 @@ public class CarView {
      * },
      */
     public static String jsonMapFull(Car car) {
-        return  wrapObject(
+        return wrapObject(
                 collect("brand", car.getBrand()),
                 collect("model", car.getModel()),
                 collect("year", car.getYear()),

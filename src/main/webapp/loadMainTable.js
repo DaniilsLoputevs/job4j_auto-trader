@@ -43,17 +43,18 @@ $(document).ready(() => {
                 + `<a id="view-id-${id}" href="#" class="show-view-link">view full page</a><br>`
                 + `${carBrand} ${carModel}, ${carYear} ${carDoorCount}<br>`
                 + `<span style="font-size: 32px">${price}</span>`
-                + `${carEngine},`
+                + `${carEngine}, `
                 + `${carBody} <br>`
-                + `${carTransmission},`
+                + `${carTransmission}, `
                 + `${carFuelType} <br>`
                 + `mileage: ${carMileage} <br>`
-                + `${area},`
+                + `${area}, `
                 + `${seller}, `
                 + `<span style="color: ${isSoldColor};">${isSold}</span> <br>`
                 + `<span style="font-size: 16px">${desc}</span> <br>`
                 + `${editSignOrEmpty}`
                 + `</p>`
+                + `<div hidden class="support-hidden-order-info" id="${carBrand}">support info</div>`
                 + `</div>`
         }
         document.getElementById("order-list").innerHTML = finalHtml;
