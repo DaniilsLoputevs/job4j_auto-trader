@@ -11,6 +11,9 @@ $(document).ready(() => {
         for (let i = 0; i < data.length; i++) {
             let order = data[i];
 
+            console.log("order.img.imgBase64: |"+order.img.imgBase64 + "|");
+            console.log("imgBase64", "data:image/png;base64," + order.img.imgBase64);
+
             let id = order.id;
             let imgBase64 = "data:image/png;base64," + order.img.imgBase64;
             let desc = order.desc;
@@ -32,6 +35,7 @@ $(document).ready(() => {
             let isSold = (order.isSold) ? "Sold" : "Can buy";
 
             let isSoldColor = (order.isSold) ? "#f00" : "#2bc25b";
+            let isImgNull = (order.img.imgBase64 === "bnVsbA==");
 
             let editSignOrEmpty = (getCurrentUser() === seller)
                 ? `<a id="edit-id-${id}" href="#" class="fas fa-edit"></a>` : "";
@@ -42,7 +46,7 @@ $(document).ready(() => {
                 + `<p style="font-size: 24px">`
                 + `<a id="view-id-${id}" href="#" class="show-view-link">view full page</a><br>`
                 + `${carBrand} ${carModel}, ${carYear} ${carDoorCount}<br>`
-                + `<span style="font-size: 32px">${price}</span>`
+                + `<span style="font-size: 32px">${price}  </span>`
                 + `${carEngine}, `
                 + `${carBody} <br>`
                 + `${carTransmission}, `
@@ -54,7 +58,7 @@ $(document).ready(() => {
                 + `<span style="font-size: 16px">${desc}</span> <br>`
                 + `${editSignOrEmpty}`
                 + `</p>`
-                + `<div hidden class="support-hidden-order-info" id="${carBrand}">support info</div>`
+                + `<div hidden class="support-hidden-order-info" id="${carBrand}-${isImgNull}">support info</div>`
                 + `</div>`
         }
         document.getElementById("order-list").innerHTML = finalHtml;
