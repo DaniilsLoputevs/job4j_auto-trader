@@ -1,7 +1,6 @@
 package models.views;
 
 import models.Order;
-import util.JsonCollector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public class ViewJsonMapper {
     public static String ordersForIndexTable(List<Order> orders) {
         List<String> rsl = new ArrayList<>();
         orders.forEach(order -> rsl.add(OrderView.jsonMapFullAsUsual(order)));
-        return JsonCollector.wrapList(rsl);
+        return JsonStringCollector.wrapList(rsl);
     }
 
 

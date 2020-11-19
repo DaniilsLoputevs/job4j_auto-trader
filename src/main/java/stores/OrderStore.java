@@ -30,39 +30,39 @@ public class OrderStore {
     public List<Order> getAll() {
         LOG.info("HBM OrderStore: getAll() - START");
         String hql = "select distinct mt from Order as mt "
-                + "join fetch mt.car "
-                + "join fetch mt.seller "
-                + "join fetch mt.imgAlbum.imgList";
+                + "join mt.car "
+                + "join mt.seller "
+                + "join mt.imgAlbum.imgList";
         LOG.info("HQL: {}", hql);
-        LOG.info("HBM Core: getAll() - FINISH");
+        LOG.info("HBM OrderStore: getAll() - FINISH");
         return HbmProvider.instOf().exeQueryList(hql);
     }
 
     public Order getById(int id) {
         LOG.info("HBM OrderStore: getAll() - START");
         String hql = "select distinct mt from Order as mt "
-                + "join fetch mt.car "
-                + "join fetch mt.seller "
-                + "join fetch mt.imgAlbum.imgList "
+                + "join mt.car "
+                + "join mt.seller "
+                + "join mt.imgAlbum.imgList "
                 + "where mt.id=" + id;
         List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
         LOG.info("HQL: {}", hql);
-        LOG.info("HBM Core: getById() - FINISH");
+        LOG.info("HBM OrderStore: getById() - FINISH");
         return  core.getFirstOrEmpty(temp, new Order());
     }
 
-    public Order getByName(String name) {
-        LOG.info("HBM OrderStore: getAll() - START");
-        String hql = "select distinct mt from Order as mt "
-                + "join fetch mt.car "
-                + "join fetch mt.seller "
-                + "join fetch mt.imgAlbum.imgList "
-                + "where mt.name=" + name;
-        List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
-        LOG.info("HQL: {}", hql);
-        LOG.info("HBM Core: getByName() - FINISH");
-        return core.getFirstOrEmpty(temp, new Order());
-    }
+//    public Order getByName(String name) {
+//        LOG.info("HBM OrderStore: getByName() - START");
+//        String hql = "select distinct mt from Order as mt "
+//                + "join fetch mt.car "
+//                + "join fetch mt.seller "
+//                + "join fetch mt.imgAlbum.imgList "
+//                + "where mt.name=" + name;
+//        List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
+//        LOG.info("HQL: {}", hql);
+//        LOG.info("HBM OrderStore: getByName() - FINISH");
+//        return core.getFirstOrEmpty(temp, new Order());
+//    }
 
     public void delete(int id) {
         core.delete(id);

@@ -1,12 +1,14 @@
 /**
  * load selected Order by Id from back-end.
  * check selected-order-id:
- * if not null, load data from back-end and set into inputs.
+ * if selectedId === null ->> user place new Order
+ * else ->> load data from back and set into inputs on DOM
  */
 $(document).ready(() => {
-    const selectedId = sessionStorage.getItem("order-edit-selected-id");
+    let selectedId = sessionStorage.getItem("order-edit-selected-id");
 
-    if (selectedId !== null) {
+    if (selectedId !== null && selectedId !== "noneId") {
+
         $.ajax({
             type: 'GET',
             url: BACK_END_URL,
@@ -35,7 +37,6 @@ $(document).ready(() => {
             $("#in-order-area").val(parseData.area);
             $("#in-order-is-sold").val(parseData.isSold);
 
-
             document.getElementById('in-order-img-show')
                 .setAttribute(
                     'src',
@@ -44,4 +45,5 @@ $(document).ready(() => {
         });
 
     }
+
 });

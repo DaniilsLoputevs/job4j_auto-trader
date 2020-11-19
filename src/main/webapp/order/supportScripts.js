@@ -7,5 +7,6 @@ $(document).ready(() => {
         imgTag.src = window.URL.createObjectURL(this.files[0]);
         imgTag.width = 250;
         imgTag.height = 250;
+        imgTag.style.display = "block";
     };
 });

@@ -1,15 +1,15 @@
-package util;
+package models.views;
 
 import java.util.List;
 
 /**
- * JsonCollector - manual JSON writer.
+ * JsonStringCollector - manual JSON writer.
  * Use thi API for collect PART of object OR warp pair of key-value into json string.
  *
  * @author Daniils Loputevs
  * @since 16.10.2020.
  */
-public class JsonCollector {
+public class JsonStringCollector {
 
     public static String wrapList(List<String> pairsList) {
         return wrapCore('[', ']', pairsList);

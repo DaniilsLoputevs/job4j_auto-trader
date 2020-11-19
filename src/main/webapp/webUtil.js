@@ -5,11 +5,11 @@
  * @param String - name of HTML file with packages name.
  */
 function goToHtmlAuth(String) {
-    if (checkAuth() >= 0) {
+    // if (checkAuth() >= 0) {
     window.location.href = getContextPath() + "/" + String + ".html";
-    } else {
-        alert("You need to be authorized user, to use this option.");
-    }
+    // } else {
+    //     alert("You need to be authorized user, to use this option.");
+    // }
 }
 
 /**
@@ -71,8 +71,17 @@ function getCurrentUser() {
 
 // <button type="button" id="manual-script-run">Script test</button>
 
-// $(function () {
-//     $('#manual-script-run').click(() => {
-//         // write script here
-//     })
-// });
+$(function () {
+    $('#manual-script-run').click(() => {
+        // write script here
+        let temp = sessionStorage.getItem("order-edit-selected-id");
+        console.log("session: order-edit-selected-id: ", temp);
+        console.log("type of", temp);
+
+        sessionStorage.setItem("order-edit-selected-id", "noneId");
+
+        temp = sessionStorage.getItem("order-edit-selected-id");
+        console.log("session: order-edit-selected-id: ", temp);
+        console.log("type of", temp);
+    })
+});

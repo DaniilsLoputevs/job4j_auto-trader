@@ -33,7 +33,7 @@ $(function () {
             data: formData
         }).done((data) => {
             alert("Order save");
-            sessionStorage.setItem("order-edit-selected-id", null);
+            sessionStorage.setItem("order-edit-selected-id", "noneId");
             goToHtmlAuth("index");
         }).fail((err) => {
             alert("Error!!! - See console");

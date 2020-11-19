@@ -2,8 +2,8 @@ package models.views;
 
 import models.User;
 
-import static util.JsonCollector.collect;
-import static util.JsonCollector.wrapObject;
+import static models.views.JsonStringCollector.collect;
+import static models.views.JsonStringCollector.wrapObject;
 
 public class UserView {
 

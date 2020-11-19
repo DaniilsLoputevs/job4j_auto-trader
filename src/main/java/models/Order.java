@@ -4,6 +4,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 import java.util.StringJoiner;
 
@@ -33,12 +34,29 @@ public class Order {
     private User seller;
     private boolean isSold;
 
+    @Temporal(value = TemporalType.DATE)
+    private Date created;
+
     public Order() {
     }
 
+//    public Order(int id, ImgAlbum imgAlbum,
+//                 String description, int price, Car car,
+//                 String area, User seller, boolean isSold) {
+//        this.id = id;
+//        this.imgAlbum = imgAlbum;
+//        this.description = description;
+//        this.price = price;
+//        this.car = car;
+//        this.area = area;
+//        this.seller = seller;
+//        this.isSold = isSold;
+//    }
+
     public Order(int id, ImgAlbum imgAlbum,
                  String description, int price, Car car,
-                 String area, User seller, boolean isSold) {
+                 String area, User seller, boolean isSold,
+                 Date created) {
         this.id = id;
         this.imgAlbum = imgAlbum;
         this.description = description;
@@ -47,6 +65,7 @@ public class Order {
         this.area = area;
         this.seller = seller;
         this.isSold = isSold;
+        this.created = created;
     }
 
     public int getId() {
@@ -113,6 +132,14 @@ public class Order {
         isSold = sold;
     }
 
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -150,4 +177,5 @@ public class Order {
                 .add("isSold=" + isSold)
                 .toString();
     }
+
 }

@@ -11,9 +11,6 @@ $(document).ready(() => {
         for (let i = 0; i < data.length; i++) {
             let order = data[i];
 
-            console.log("order.img.imgBase64: |"+order.img.imgBase64 + "|");
-            console.log("imgBase64", "data:image/png;base64," + order.img.imgBase64);
-
             let id = order.id;
             let imgBase64 = "data:image/png;base64," + order.img.imgBase64;
             let desc = order.desc;
@@ -33,6 +30,7 @@ $(document).ready(() => {
             let area = order.area;
             let seller = order.seller.name;
             let isSold = (order.isSold) ? "Sold" : "Can buy";
+            let created = order.created;
 
             let isSoldColor = (order.isSold) ? "#f00" : "#2bc25b";
             let isImgNull = (order.img.imgBase64 === "bnVsbA==");
@@ -55,10 +53,13 @@ $(document).ready(() => {
                 + `${area}, `
                 + `${seller}, `
                 + `<span style="color: ${isSoldColor};">${isSold}</span> <br>`
+                + `${created} `
                 + `<span style="font-size: 16px">${desc}</span> <br>`
-                + `${editSignOrEmpty}`
+                + `${editSignOrEmpty} <br>`
                 + `</p>`
-                + `<div hidden class="support-hidden-order-info" id="${carBrand}-${isImgNull}">support info</div>`
+                // hidden support info
+                + `<div hidden class="support-hidden-order-info"
+                    id="${carBrand}&${isImgNull}&${created}">support info</div>`
                 + `</div>`
         }
         document.getElementById("order-list").innerHTML = finalHtml;

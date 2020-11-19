@@ -4,8 +4,8 @@ import models.ImgAlbum;
 
 import javax.xml.bind.DatatypeConverter;
 
-import static util.JsonCollector.collect;
-import static util.JsonCollector.wrapObject;
+import static models.views.JsonStringCollector.collect;
+import static models.views.JsonStringCollector.wrapObject;
 
 /**
  * Standard: encoding bytes to Base64.

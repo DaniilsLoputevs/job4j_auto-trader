@@ -1,9 +1,10 @@
 package models.views;
 
 import models.Order;
+import util.DateStrFormat;
 
-import static util.JsonCollector.collect;
-import static util.JsonCollector.wrapObject;
+import static models.views.JsonStringCollector.collect;
+import static models.views.JsonStringCollector.wrapObject;
 
 public class OrderView {
 
@@ -19,6 +20,7 @@ public class OrderView {
      * "area":String,
      * "seller":MappedObj(User), - only name
      * "isSold":boolean
+     * "created":String (Date to Sting by pattern)
      * }
      */
     public static String jsonMapFullAsUsual(Order order) {
@@ -30,7 +32,8 @@ public class OrderView {
                 collect("car", CarView.jsonMapFull(order.getCar())),
                 collect("area", order.getArea()),
                 collect("seller", UserView.jsonMapOnlyName(order.getSeller())),
-                collect("isSold", order.isSold())
+                collect("isSold", order.isSold()),
+                collect("created", DateStrFormat.toFront(order.getCreated()))
         );
     }
     /**
@@ -45,6 +48,7 @@ public class OrderView {
      * "area":String,
      * "seller":MappedObj(User), - name && email
      * "isSold":boolean
+     * "created":String (Date to Sting by pattern)
      * }
      */
     public static String jsonMapFull(Order order) {
@@ -56,7 +60,8 @@ public class OrderView {
                 collect("car", CarView.jsonMapFull(order.getCar())),
                 collect("area", order.getArea()),
                 collect("seller", UserView.jsonMapNameAndEmail(order.getSeller())),
-                collect("isSold", order.isSold())
+                collect("isSold", order.isSold()),
+                collect("created", DateStrFormat.toFront(order.getCreated()))
         );
     }
 }

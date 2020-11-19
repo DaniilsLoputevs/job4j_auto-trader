@@ -13,7 +13,7 @@ public class ImgAlbum {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ElementCollection(targetClass = byte[].class)
+    @ElementCollection(targetClass = byte[].class, fetch = FetchType.EAGER)
     private List<byte[]> imgList;
 
     public ImgAlbum() {
