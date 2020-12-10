@@ -15,7 +15,6 @@ import java.util.List;
 public class IndexCode {
     private static final Logger LOG = LoggerFactory.getLogger(IndexCode.class);
 
-
     public static void getTable(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
         LOG.info("getTable() - START");
         resp.setContentType("text/json");

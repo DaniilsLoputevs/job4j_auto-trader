@@ -12,9 +12,9 @@ public class UserStore {
         return LazyHolder.INSTANCE;
     }
 
+
     /* Class description */
     private final HbmCoreStoreApi<User> core = new HbmCoreStoreApi<>("User");
-
 
     public void add(User user) {
         core.add(user);
@@ -33,4 +33,5 @@ public class UserStore {
     public void delete(int id) {
         core.delete(id);
     }
+
 }

@@ -29,4 +29,5 @@ public class ImgAlbumView {
 
         return wrapObject(collect("imgBase64", imgBase64));
     }
+
 }

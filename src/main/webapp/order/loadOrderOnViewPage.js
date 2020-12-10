@@ -1,7 +1,5 @@
-
 $(document).ready(() => {
     const selectedId = sessionStorage.getItem("order-view-selected-id");
-    // alert("load page: id: " + selectedId);
 
     if (selectedId !== null) {
         $.ajax({

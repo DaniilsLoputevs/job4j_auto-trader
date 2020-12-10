@@ -40,19 +40,6 @@ public class Order {
     public Order() {
     }
 
-//    public Order(int id, ImgAlbum imgAlbum,
-//                 String description, int price, Car car,
-//                 String area, User seller, boolean isSold) {
-//        this.id = id;
-//        this.imgAlbum = imgAlbum;
-//        this.description = description;
-//        this.price = price;
-//        this.car = car;
-//        this.area = area;
-//        this.seller = seller;
-//        this.isSold = isSold;
-//    }
-
     public Order(int id, ImgAlbum imgAlbum,
                  String description, int price, Car car,
                  String area, User seller, boolean isSold,

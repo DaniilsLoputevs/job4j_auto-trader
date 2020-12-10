@@ -16,7 +16,6 @@ import static util.RequestUtil.getInt;
 public class View {
     private static final Logger LOG = LoggerFactory.getLogger(Edit.class);
 
-
     public static void getOrder(HttpServletRequest req, HttpServletResponse resp, HttpServlet servlet) {
         LOG.info("getOrder() - START");
         int orderId = getInt(req, "orderId");
@@ -25,4 +24,5 @@ public class View {
         ResponseWrite.write(resp, jsonStringDto);
         LOG.info("getOrder() - FINISH");
     }
+
 }

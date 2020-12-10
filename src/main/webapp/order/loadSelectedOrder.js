@@ -19,7 +19,6 @@ $(document).ready(() => {
             }
         }).done((data) => {
             const parseData = JSON.parse(data);
-            // console.log("parseData", parseData);
 
             $("#in-car-brand").val(parseData.car.brand);
             $("#in-car-model").val(parseData.car.model);

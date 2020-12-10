@@ -19,7 +19,7 @@ public class ImgAlbum {
     public ImgAlbum() {
     }
 
-    public ImgAlbum(int id, List<byte[]>  imgList) {
+    public ImgAlbum(int id, List<byte[]> imgList) {
         this.id = id;
         this.imgList = imgList;
     }

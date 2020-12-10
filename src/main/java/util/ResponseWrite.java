@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * util for more clean code.
+ * Util for more clean code.
  *
- * @since 22.10.2020.
  * @author Daniils Loputevs(laiwiense@gmail.com)
+ * @since 22.10.2020.
  */
 public class ResponseWrite {
     public static <T> void write(HttpServletResponse resp, T string) {
@@ -31,4 +31,5 @@ public class ResponseWrite {
             e.printStackTrace();
         }
     }
+
 }

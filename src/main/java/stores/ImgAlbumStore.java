@@ -9,9 +9,11 @@ public class ImgAlbumStore {
     private static class LazyHolder {
         static final ImgAlbumStore INSTANCE = new ImgAlbumStore();
     }
+
     public static ImgAlbumStore instOf() {
         return ImgAlbumStore.LazyHolder.INSTANCE;
     }
+
 
     /* Class description */
     private final HbmCoreStoreApi<ImgAlbum> core = new HbmCoreStoreApi<>("ImgAlbum");

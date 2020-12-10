@@ -31,5 +31,4 @@ public class ViewJsonMapper {
         return JsonStringCollector.wrapList(rsl);
     }
 
-
 }

@@ -89,8 +89,8 @@ function setEditIconFunctionality() {
         sessionStorage.setItem("order-edit-selected-id", editId);
         goToHtmlAuth("order/edit");
     });
-    // open full view page
 
+    // open full view page
     $(".show-view-link").click(function () {
         // extract order id from tag id.
         const editId = this.id.split("-")[2];

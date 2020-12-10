@@ -8,7 +8,6 @@ import static models.views.JsonStringCollector.wrapObject;
 public class CarView {
 
     /**
-     *
      * @param car model for prepare to front.
      * @return (String) json obj:
      * {

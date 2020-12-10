@@ -12,6 +12,7 @@ public class CarStore {
         return CarStore.LazyHolder.INSTANCE;
     }
 
+
     /* Class description */
     private final HbmCoreStoreApi<Car> core = new HbmCoreStoreApi<>("Car");
 

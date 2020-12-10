@@ -15,9 +15,11 @@ public class OrderStore {
     private static class LazyHolder {
         static final OrderStore INSTANCE = new OrderStore();
     }
+
     public static OrderStore instOf() {
         return OrderStore.LazyHolder.INSTANCE;
     }
+
 
     /* Class description */
     private final HbmCoreStoreApi<Order> core = new HbmCoreStoreApi<>("Order");
@@ -48,21 +50,8 @@ public class OrderStore {
         List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
         LOG.info("HQL: {}", hql);
         LOG.info("HBM OrderStore: getById() - FINISH");
-        return  core.getFirstOrEmpty(temp, new Order());
+        return core.getFirstOrEmpty(temp, new Order());
     }
-
-//    public Order getByName(String name) {
-//        LOG.info("HBM OrderStore: getByName() - START");
-//        String hql = "select distinct mt from Order as mt "
-//                + "join fetch mt.car "
-//                + "join fetch mt.seller "
-//                + "join fetch mt.imgAlbum.imgList "
-//                + "where mt.name=" + name;
-//        List<Order> temp = HbmProvider.instOf().exeQueryList(hql);
-//        LOG.info("HQL: {}", hql);
-//        LOG.info("HBM OrderStore: getByName() - FINISH");
-//        return core.getFirstOrEmpty(temp, new Order());
-//    }
 
     public void delete(int id) {
         core.delete(id);

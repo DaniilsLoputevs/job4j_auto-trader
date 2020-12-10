@@ -34,4 +34,5 @@ public class UserView {
     public static String jsonMapOnlyName(User user) {
         return wrapObject(collect("name", user.getName()));
     }
+
 }

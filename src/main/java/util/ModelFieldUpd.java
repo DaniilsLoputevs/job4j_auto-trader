@@ -34,4 +34,5 @@ public class ModelFieldUpd {
             setter.accept(newVal);
         }
     }
+
 }

@@ -64,4 +64,5 @@ public class OrderView {
                 collect("created", DateStrFormat.toFront(order.getCreated()))
         );
     }
+
 }
