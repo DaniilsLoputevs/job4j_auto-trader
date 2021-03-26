@@ -8,7 +8,12 @@ $(document).ready(() => {
         }
     }).done((data) => {
         let finalHtml = "";
-        for (let i = 0; i < data.length; i++) {
+
+        /* show first: old added */
+        // for (let i = 0; i < data.length; i++) {
+
+        /* show first: fresh added */
+        for (let i = data.length - 1; i >= 0; i--) {
             let order = data[i];
 
             let id = order.id;
@@ -57,7 +62,6 @@ $(document).ready(() => {
                 + `<span style="font-size: 16px">${desc}</span> <br>`
                 + `${editSignOrEmpty} <br>`
                 + `</p>`
-                // hidden support info
                 + `<div hidden class="support-hidden-order-info"
                     id="${carBrand}&${isImgNull}&${created}">support info</div>`
                 + `</div>`
