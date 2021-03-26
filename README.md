@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/DaniilsLoputevs/job4j_auto-trader.svg?branch=main)](https://travis-ci.org/DaniilsLoputevs/job4j_auto-trader)
+
 # job4j_auto-trader
 
 ### About the project
