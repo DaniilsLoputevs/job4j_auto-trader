@@ -6,7 +6,6 @@ jdk:
 services:
   - postgresql
 
-
 # Отправлять уведомление на почту laiwiense@gmail.com
 notifications:
   email:
