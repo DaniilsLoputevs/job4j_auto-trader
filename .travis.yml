@@ -6,6 +6,17 @@ jdk:
 services:
   - postgresql
 
+before_install:
+  - chmod +x mvnw
+
+install: true
+  - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+# create psql database
+before_script:
+  - psql -c 'create database job4j_auto-trader;' -U postgres
+
+
 # Отправлять уведомление на почту laiwiense@gmail.com
 notifications:
   email:
